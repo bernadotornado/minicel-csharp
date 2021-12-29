@@ -14,8 +14,7 @@ namespace minicel
 
         string last = "";
 
-        ConsoleColor foreground = Console.ForegroundColor;
-        ConsoleColor background = Console.BackgroundColor;
+        
         enum State
         {
             CommandMode, 
@@ -27,20 +26,7 @@ namespace minicel
         List<List<string>> cells = new List<List<string>>();
         bool isFirstLoop = true;
 
-        public void GreenBGBlackFG()
-        {
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.BackgroundColor = ConsoleColor.Green;
-        }public void BlackBGGreenFG()
-        {
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.BackgroundColor = ConsoleColor.Black;
-        }
-        public void ResetColors()
-        {
-            Console.ForegroundColor = foreground;
-            Console.BackgroundColor = background;
-        }
+        
         ConsoleKeyInfo consoleKey;
         public MinicelApplication(List<string> content)
         {
@@ -57,13 +43,13 @@ namespace minicel
                     consoleKey = Console.ReadKey();
                     inputChar = consoleKey.KeyChar;
                 }
-                ResetColors();
+               ConsoleAppearance.ResetColors();
                 if(currentstate == State.MovementMode)
                 {
 
                 Console.Clear();
-                ResetColors();
-                GreenBGBlackFG();
+                    ConsoleAppearance.ResetColors();
+                    ConsoleAppearance.GreenBGBlackFG();
                 Console.Write("   ");
                 for (int column = 65; column < 78; column++)
                 {
@@ -72,7 +58,7 @@ namespace minicel
 
                 
                 Console.Write("\n");
-                GreenBGBlackFG();
+                    ConsoleAppearance.GreenBGBlackFG();
                 for (int row = 0;  row< 26; row++)
                 {
                     string rowf = row.ToString();
@@ -93,7 +79,7 @@ namespace minicel
                     switch (inputChar)
                     {
                         case 'q':
-                            ResetColors();
+                            ConsoleAppearance.ResetColors();
                             Console.Clear();
                             Environment.Exit(0);
                             break;
@@ -122,7 +108,7 @@ namespace minicel
                     }
                 }
 
-                ResetColors();
+                ConsoleAppearance.ResetColors();
                 string s = currentstate switch
                 {
                     State.InsertMode => "--INSERT--",
@@ -131,7 +117,7 @@ namespace minicel
                    // _ => "--MOVE--"
 
                 };
-                BlackBGGreenFG();
+                ConsoleAppearance.BlackBGGreenFG();
                 if(s != last)
                     Console.WriteLine("\t" + s);
                 last = s;
