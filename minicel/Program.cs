@@ -7,6 +7,14 @@ namespace minicel
 {
     class Program
     {
+
+        static string title = "" +
+            "       _       _             _ _  \n" +
+            "      (_)     (_)           | | | \n" +
+            " ____  _ ____  _  ____ _____| | | \n" +
+            "|    \\| |  _ \\| |/ ___) ___ | | | \n" +
+            "| | | | | | | | ( (___| ____| | | \n" +
+            "|_|_|_|_|_| |_|_|\\____)_____)\\_)_)" ;
         static string versionString = "1.0.0 indev";
         static List<string> arg1commands = new List<string>
         {
@@ -30,15 +38,36 @@ namespace minicel
         }
         static void Help()
         {
-            Console.Write($"minicel version {versionString} \n\n" +
-                   $"USAGE:  minicel <command> <operation> <flag>\n" +
-                   $"\n\tOpen file:\n" + 
-                   "\t\tminicel <path>\n" +
-                   "\t\tminicel <path> -f\n" +
-                   "\t\tminicel -o <path>\n" +
-                   "\t\tminicel --open <path>\n" +
-                   "\t\tminicel -o <path> -f\n" +
-                   "\t\tminicel --open <path> -f\n"
+            ConsoleColor cr = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write($"{title}\n");
+            Console.ForegroundColor = cr;
+            Console.Write($" version ");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write($"{versionString} \n\n");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write($" USAGE:  minicel <command> <operation> <flag>\n");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write(
+                   $"\t Note: When a file is opened, commands are not executed in a UNIX terminal style way.");
+            Console.ForegroundColor = cr;
+            Console.Write(
+                   $"\n\t Help:\n" +
+                   "\t\t minicel\n" +
+                   "\t\t minicel h\n" +
+                   "\t\t minicel help\n" +
+                   "\t\t minicel -h\n" +
+                   "\t\t minicel -help\n" +
+                   $"\n\t Check version:\n" +
+                   "\t\t minicel --version\n" +
+                   "\t\t minicel -v\n " +
+                   $"\n\t Open file:\n" + 
+                   "\t\t minicel <path>\n" +
+                   "\t\t minicel <path> -f\n" +
+                   "\t\t minicel -o <path>\n" +
+                   "\t\t minicel --open <path>\n" +
+                   "\t\t minicel -o <path> -f\n" +
+                   "\t\t minicel --open <path> -f\n"
                    );
         }
         static void Version()
@@ -59,14 +88,27 @@ namespace minicel
         }
 
 
-        static void OpenFile(string[] args, List<string> content)
+        static void OpenFile(string[] args, List<string> content, bool force = false)
         {
+            if(args[args.Length-1] == "-f")
+            {
+                force = true;
+            }
+
             StreamReader sr = null;
             try
             {
-                string s = args[0];
-                string[] vs=  s.Split(".");
-                if(vs[1] == ".csv")
+                string[] vs = new string[] { "debug_none" };
+                if (!force)
+                {
+                    string s = args[0];
+                    vs = s.Split(".");
+                    foreach (string item in vs)
+                    {
+                        Console.WriteLine(item);
+                    }
+                }
+                if(vs[1] == "csv" || force)
                 { 
                     sr = new StreamReader(args[0]);
                 }
@@ -116,6 +158,25 @@ namespace minicel
                                 MissingPathError();
                                 break; 
                     }
+                }
+                else if(args.Length >= 2)
+                {
+                    switch (args[0])
+                    {
+                        case "--open":
+                        case "-o":
+                            string[] argf = new string[args.Length - 1];
+                            for (int i = 0; i < argf.Length; i++)
+                            {
+                                argf[i] = args[i + 1];
+                            }
+                            OpenFile(argf, content);
+                            break;
+                    }
+                }
+                else if(args.Length == 3)
+                {
+
                 }
             }
             else
