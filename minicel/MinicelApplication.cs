@@ -47,10 +47,10 @@ namespace minicel
                 Console.Write("   ");
                 for (int column = 65; column < 78; column++)
                 {
-                    Console.Write((char)(column)+"       |");
+                    Console.Write((char)(column)+"       "+(column != 77 ? "|": ""));
                 }
 
-                ResetFont();
+                
                 Console.Write("\n");
                 GreenFont();
                 for (int row = 0;  row< 11; row++)
