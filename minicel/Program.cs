@@ -231,7 +231,11 @@ namespace minicel
             {
                 Help();
             }
-            MinicelApplication app = new MinicelApplication(content);
+
+            if(args.Length != 0)
+            {
+                MinicelApplication app = new MinicelApplication(content);
+            }
         }
     }
 }

@@ -8,6 +8,10 @@ namespace minicel
 {
     class MinicelApplication
     {
+
+        int xPos = 0;
+        int yPos = 0;
+
         ConsoleColor foreground = Console.ForegroundColor;
         ConsoleColor background = Console.BackgroundColor;
         enum State
@@ -51,7 +55,15 @@ namespace minicel
                 GreenFont();
                 for (int row = 0;  row< 11; row++)
                 {
-                    Console.Write(row+"\n");
+                    string rowf = row.ToString();
+                    string res = "";
+                    int length = 3;
+                    for(int i = 0; i< length-rowf.Length; i++)
+                    {
+                        res += " ";
+                    }
+                    res += row.ToString();
+                    Console.Write(res+"\n");
                 }
 
                 char inputChar = Console.ReadKey().KeyChar;
