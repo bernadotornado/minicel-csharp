@@ -9,12 +9,12 @@ namespace minicel
     {
 
         static string title = "" +
-            "       _       _             _ _  \n" +
-            "      (_)     (_)           | | | \n" +
-            " ____  _ ____  _  ____ _____| | | \n" +
-            "|    \\| |  _ \\| |/ ___) ___ | | | \n" +
-            "| | | | | | | | ( (___| ____| | | \n" +
-            "|_|_|_|_|_| |_|_|\\____)_____)\\_)_)" ;
+            "       _       _             _   \n" +
+            "      (_)     (_)           | |  \n" +
+            " ____  _ ____  _  ____ _____| |  \n" +
+            "|    \\| |  _ \\| |/ ___) ___ | |  \n" +
+            "| | | | | | | | ( (___| ____| | \n" +
+            "|_|_|_|_|_| |_|_|\\____)____) \\_)" ;
         static string versionString = "1.0.0 indev";
         static List<string> arg1commands = new List<string>
         {
@@ -46,44 +46,44 @@ namespace minicel
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write($"{versionString} \n\n");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.Write($" USAGE:  minicell <command> <operation> <flag>\n");
+            Console.Write($" USAGE:  minicel <command> <operation> <flag>\n");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write(
                    $"\t Note: When a file is opened, commands are not executed in a UNIX terminal style way.");
             Console.ForegroundColor = cr;
             Console.Write(
                    $"\n\t Help:\n" +
-                   "\t\t minicell\n" +
-                   "\t\t minicell h\n" +
-                   "\t\t minicell help\n" +
-                   "\t\t minicell -h\n" +
-                   "\t\t minicell -help\n" +
+                   "\t\t minicel\n" +
+                   "\t\t minicel h\n" +
+                   "\t\t minicel help\n" +
+                   "\t\t minicel -h\n" +
+                   "\t\t minicel -help\n" +
                    $"\n\t Check version:\n" +
-                   "\t\t minicell --version\n" +
-                   "\t\t minicell -v\n " +
+                   "\t\t minicel --version\n" +
+                   "\t\t minicel -v\n " +
                    $"\n\t Open file:\n" + 
-                   "\t\t minicell <path>\n" +
-                   "\t\t minicell <path> -f\n" +
-                   "\t\t minicell -o <path>\n" +
-                   "\t\t minicell --open <path>\n" +
-                   "\t\t minicell -o <path> -f\n" +
-                   "\t\t minicell --open <path> -f\n"
+                   "\t\t minicel <path>\n" +
+                   "\t\t minicel <path> -f\n" +
+                   "\t\t minicel -o <path>\n" +
+                   "\t\t minicel --open <path>\n" +
+                   "\t\t minicel -o <path> -f\n" +
+                   "\t\t minicel --open <path> -f\n"
                    );
         }
         static void Version()
         {
-            Console.WriteLine($"minicell version {versionString}");
+            Console.WriteLine($"minicel version {versionString}");
         }
         static void MissingPathError()
         {
             Quit(1, "Error: Missing path.\n" +
                                     "USAGE:\n" +
-                                    "\tminicell <path>\n" +
-                                    "\tminicell <path> -f\n" +
-                                    "\tminicell -o <path>\n" +
-                                    "\tminicell --open <path>\n" +
-                                    "\tminicell -o <path> -f\n" +
-                                    "\tminicell --open <path> -f\n" +
+                                    "\tminicel <path>\n" +
+                                    "\tminicel <path> -f\n" +
+                                    "\tminicel -o <path>\n" +
+                                    "\tminicel --open <path>\n" +
+                                    "\tminicel -o <path> -f\n" +
+                                    "\tminicel --open <path> -f\n" +
                                     "");
         }
 
@@ -114,7 +114,7 @@ namespace minicel
                 }
                 else
                 {
-                    Quit(1, $"\"{args[0]}\" is not of type .csv\nType minicell <path> -f to force open the file.");
+                    Quit(1, $"\"{args[0]}\" is not of type .csv\nType minicel <path> -f to force open the file.");
                 }
             }
             catch (Exception)
