@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\admin\\Desktop\\minicel\\minicel\\minicel\\minicel.csproj",
+      "projectUniqueName": "C:\\Users\\admin\\Desktop\\minicel\\minicel\\minicel-csharp\\minicel\\minicel.csproj",
       "projectName": "minicel",
-      "projectPath": "C:\\Users\\admin\\Desktop\\minicel\\minicel\\minicel\\minicel.csproj",
+      "projectPath": "C:\\Users\\admin\\Desktop\\minicel\\minicel\\minicel-csharp\\minicel\\minicel.csproj",
       "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\admin\\Desktop\\minicel\\minicel\\minicel\\obj\\",
+      "outputPath": "C:\\Users\\admin\\Desktop\\minicel\\minicel\\minicel-csharp\\minicel\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

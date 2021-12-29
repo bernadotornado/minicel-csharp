@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0NXkQmdFuDjHvC8Pnhwzkb6XFJ4yYdQWGUhCWeID5MJ6ZA/VLiB1unbxy15m+2Dd1Onv8GcDEql4PrPUCLez0w==",
+  "dgSpecHash": "ZicGQCA8uhjDwkSgJnPupJzap4HSEva8B3Tzd0bVP8aGM2zuGG08Czkg+gO54iuoOZ6LQw2BEuH2ZK0Mkn78mw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\admin\\Desktop\\minicel\\minicel\\minicel\\minicel.csproj",
+  "projectFilePath": "C:\\Users\\admin\\Desktop\\minicel\\minicel\\minicel-csharp\\minicel\\minicel.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
