@@ -82,6 +82,7 @@ namespace minicel
         static void Version()
         {
             Console.WriteLine($"minicel version {versionString}");
+            Quit(0);
         }
         static void NewFile(string[] args, List<string> content,string s)
         {
@@ -232,9 +233,14 @@ namespace minicel
                 Help();
             }
 
+            
             if(args.Length != 0)
             {
                 MinicelApplication app = new MinicelApplication(content);
+            }
+            else
+            {
+                Console.Read();
             }
         }
     }
