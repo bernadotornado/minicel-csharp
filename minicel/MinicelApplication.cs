@@ -20,30 +20,37 @@ namespace minicel
             InsertMode,
             MovementMode
         }
+        State currentstate = State.MovementMode;
+        List<List<string>> cells = new List<List<string>>();
 
-
-        public void GreenFont()
+        public void GreenBGBlackFG()
         {
             Console.ForegroundColor = ConsoleColor.Black;
             Console.BackgroundColor = ConsoleColor.Green;
+        }public void BlackBGGreenFG()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.BackgroundColor = ConsoleColor.Black;
         }
-        public void ResetFont()
+        public void ResetColors()
         {
             Console.ForegroundColor = foreground;
             Console.BackgroundColor = background;
         }
         public MinicelApplication(List<string> content)
         {
-            //foreach (var item in content)
-            //{
-            //    Console.WriteLine(item);
-            //}
+            foreach (var item in content)
+            {
+                string[] s = item.Split(',');
+                List<string> sl = s.ToList<string>();
+                cells.Add(sl);
+            }
             while (true)
             {
-                ResetFont();
+                ResetColors();
                 Console.Clear();
-                ResetFont();
-                GreenFont();
+                ResetColors();
+                GreenBGBlackFG();
                 Console.Write("   ");
                 for (int column = 65; column < 78; column++)
                 {
@@ -52,8 +59,8 @@ namespace minicel
 
                 
                 Console.Write("\n");
-                GreenFont();
-                for (int row = 0;  row< 11; row++)
+                GreenBGBlackFG();
+                for (int row = 0;  row< 26; row++)
                 {
                     string rowf = row.ToString();
                     string res = "";
@@ -65,11 +72,22 @@ namespace minicel
                     res += row.ToString();
                     Console.Write(res+"\n");
                 }
+                ResetColors();
+                string s = currentstate switch 
+                {
+                    State.InsertMode => "--INSERT--",
+                    State.CommandMode=> "--COMMAND--",
+                    State.MovementMode=> "--MOVE--", 
+                    _ => "--MOVE--"
+
+                };
+                BlackBGGreenFG();
+                Console.WriteLine("\t"+s);
 
                 char inputChar = Console.ReadKey().KeyChar;
                 if(inputChar == 'q')
                 {
-                    ResetFont();
+                    ResetColors();
                     Console.Clear();
                     Environment.Exit(0);
                 }

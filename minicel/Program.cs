@@ -240,7 +240,7 @@ namespace minicel
             }
             else
             {
-                Console.Read();
+                Console.ReadKey();
             }
         }
     }
