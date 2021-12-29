@@ -129,15 +129,15 @@ namespace minicel
             try
             {
                 string[] vs = new string[] { "debug_none" };
-                //if (!force)
-                //{
-                //    string s = args[0];
-                //    vs = s.Split(".");
-                //    foreach (string item in vs)
-                //    {
-                //        Console.WriteLine(item);
-                //    }
-                //}
+                if (!force)
+                {
+                    string s = args[0];
+                    vs = s.Split(".");
+                    foreach (string item in vs)
+                    {
+                        Console.WriteLine(item);
+                    }
+                }
                 if(vs[1] == "csv" || force)
                 { 
                     sr = new StreamReader(args[0]);
@@ -231,11 +231,7 @@ namespace minicel
             {
                 Help();
             }
-
-            foreach (var item in content)
-            {
-                Console.WriteLine("Content");
-            }
+            MinicelApplication app = new MinicelApplication(content);
         }
     }
 }
