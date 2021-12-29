@@ -72,63 +72,66 @@ namespace minicel
         }
 
 
+        void GetInput()
+        {
+            consoleKey = Console.ReadKey();
+            inputChar = consoleKey.KeyChar;
+        }
+        void UpdateState()
+        {
+            if (currentstate != State.CommandMode)
+            {
+                switch (inputChar)
+                {
+                    case 'q':
+                        ConsoleAppearance.ResetColors();
+                        Console.Clear();
+                        Environment.Exit(0);
+                        break;
+                    case ':':
+                        currentstate = State.CommandMode;
+                        break;
+                    case 'i':
+                    case '=':
+                        currentstate = State.InsertMode;
+                        break;
+                    case 'h':
+                    case 'j':
+                    case 'k':
+                    case 'l':
+                        Console.Clear();
+                        currentstate = State.MovementMode;
+                        break;
+
+                }
+            }
+            else
+            {
+                if (consoleKey.Key == ConsoleKey.Enter)
+                {
+
+                }
+            }
+        }
+
         void Loop()
         {
             while (true)
             {
                 if (!isFirstLoop)
                 {
-                    consoleKey = Console.ReadKey();
-                    inputChar = consoleKey.KeyChar;
+                    GetInput();
                 }
                 ConsoleAppearance.ResetColors();
                 if (currentstate == State.MovementMode)
-                {
-
-                    Console.Clear();
-
+                { 
+                    Console.Clear(); 
                     DrawCols();
                     DrawRows();
                     Console.Write("\n");
-                    ConsoleAppearance.GreenBGBlackFG();
-                    
-                }
-
-
-                if (currentstate != State.CommandMode)
-                {
-                    switch (inputChar)
-                    {
-                        case 'q':
-                            ConsoleAppearance.ResetColors();
-                            Console.Clear();
-                            Environment.Exit(0);
-                            break;
-                        case ':':
-                            currentstate = State.CommandMode;
-                            break;
-                        case 'i':
-                        case '=':
-                            currentstate = State.InsertMode;
-                            break;
-                        case 'h':
-                        case 'j':
-                        case 'k':
-                        case 'l':
-                            Console.Clear();
-                            currentstate = State.MovementMode;
-                            break;
-
-                    }
-                }
-                else
-                {
-                    if (consoleKey.Key == ConsoleKey.Enter)
-                    {
-
-                    }
-                }
-
+                    ConsoleAppearance.GreenBGBlackFG(); 
+                } 
+                UpdateState(); 
                 DrawMode();
                 isFirstLoop = false;
             }
@@ -143,12 +146,14 @@ namespace minicel
                 cells.Add(sl);
             }
         }
+
+        void UpdateCells() { 
+
+        }
         public MinicelApplication(List<string> content)
         {
             FillCells(content);
-            Loop();
-
-
+            Loop(); 
         }
     }
 }
