@@ -14,7 +14,7 @@ namespace minicel
             " ____  _ ____  _  ____ _____| |  \n" +
             "|    \\| |  _ \\| |/ ___) ___ | |  \n" +
             "| | | | | | | | ( (___| ____| |_ \n" +
-            "|_|_|_|_|_| |_|_|\\____)____)|___)" ;
+            "|_|_|_|_|_| |_|_|\\____)_____)___)" ;
         static string versionString = "1.0.0 indev";
         static List<string> arg1commands = new List<string>
         {
@@ -25,7 +25,8 @@ namespace minicel
             "--help", 
             "-h",
             "-o",
-            "--open"
+            "--open",
+            "new"
         };
 
         static void Quit(int exitCode, string errorMessage = "none") 
@@ -45,6 +46,14 @@ namespace minicel
             Console.Write($" version ");
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write($"{versionString} \n\n");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write(" To create a ");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("new file"); 
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write(" type "); 
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("minicel new <filename>.csv\n"); 
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write($" USAGE:  minicel <command> <operation> <flag>\n");
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -74,8 +83,28 @@ namespace minicel
         {
             Console.WriteLine($"minicel version {versionString}");
         }
-        static void MissingPathError()
+        static void NewFile(string[] args, List<string> content,string s)
         {
+
+            string[] argf = new string[]
+            {
+                s
+            };
+            
+            FileStream fs= File.Create(s);
+            fs.Close();
+           
+            OpenFile(argf, content);
+        }
+        static void MissingPathError(bool isCreatingFile = false)
+        {
+            if (isCreatingFile)
+            {
+                Quit(1, "Error: No filename was provided.\n" +
+                                    "USAGE:\n" +
+                                    "\tminicel new <filename>.csv");
+            }
+            else
             Quit(1, "Error: Missing path.\n" +
                                     "USAGE:\n" +
                                     "\tminicel <path>\n" +
@@ -85,6 +114,7 @@ namespace minicel
                                     "\tminicel -o <path> -f\n" +
                                     "\tminicel --open <path> -f\n" +
                                     "");
+
         }
 
 
@@ -99,15 +129,15 @@ namespace minicel
             try
             {
                 string[] vs = new string[] { "debug_none" };
-                if (!force)
-                {
-                    string s = args[0];
-                    vs = s.Split(".");
-                    foreach (string item in vs)
-                    {
-                        Console.WriteLine(item);
-                    }
-                }
+                //if (!force)
+                //{
+                //    string s = args[0];
+                //    vs = s.Split(".");
+                //    foreach (string item in vs)
+                //    {
+                //        Console.WriteLine(item);
+                //    }
+                //}
                 if(vs[1] == "csv" || force)
                 { 
                     sr = new StreamReader(args[0]);
@@ -117,17 +147,19 @@ namespace minicel
                     Quit(1, $"\"{args[0]}\" is not of type .csv\nType minicel <path> -f to force open the file.");
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                Console.WriteLine(e);
                 Quit(1, $"\"{args[0]}\" is not a valid file or file path.");
+
             }
             finally 
             {
                 string line;
+                
                 while ((line = sr.ReadLine()) != null)
                 {
                     content.Add(line);
-                    Console.WriteLine(line);
                 }
             }
         }
@@ -137,6 +169,18 @@ namespace minicel
             List<string> content = new List<string>();
             if(args.Length > 0)
             {
+                if(args.Length == 2)
+                {
+                    switch (args[0])
+                    {
+                        case "new":
+                            NewFile(args, content,args[1]);
+                              break;
+                        default:
+                            break;
+                    }
+                }
+
                 if(args.Length == 1)
                 {
                     if(!arg1commands.Contains(args[0]))
@@ -156,7 +200,11 @@ namespace minicel
                         case "--open":
                         case "-o":
                                 MissingPathError();
-                                break; 
+                                break;
+                        case "new":
+                                MissingPathError(true);
+                                break;
+
                     }
                 }
                 else if(args.Length >= 2)
@@ -182,6 +230,11 @@ namespace minicel
             else
             {
                 Help();
+            }
+
+            foreach (var item in content)
+            {
+                Console.WriteLine("Content");
             }
         }
     }
