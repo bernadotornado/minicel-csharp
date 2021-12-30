@@ -26,9 +26,9 @@ namespace minicel
         {
 
         } 
-        static public void ExcecuteFunction(Commands.Function function)
+        static public string ExcecuteFunction(Commands.Function function)
         {
-
+            return null;
         }
     }
     public static class Commands

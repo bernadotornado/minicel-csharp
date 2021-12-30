@@ -21,6 +21,10 @@ namespace minicel
         {
 
         }
+        public void Dump()
+        {
+
+        }
         public void Clear()
         {
 

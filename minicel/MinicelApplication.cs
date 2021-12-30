@@ -85,6 +85,10 @@ namespace minicel
         {
 
         }
+        void SetCurrentCell(string s)
+        {
+
+        }
 
         bool CheckForEsc()
         {
@@ -117,6 +121,7 @@ namespace minicel
                     }
                     break;
                 case State.InsertMode:
+
                     break;
                 case State.MovementMode:
                     
@@ -178,7 +183,7 @@ namespace minicel
                     else
                     {
                         if(CommandHandler.TryFunction(lexer.AsFunction(), out Commands.Function function)){
-                            CommandHandler.ExcecuteFunction(function);
+                           SetCurrentCell( CommandHandler.ExcecuteFunction(function));
                         }
                         else
                             CommandHandler.ThrowError(lexer.AsFunction());
