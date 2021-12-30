@@ -20,12 +20,14 @@ namespace minicel
             InsertMode,
             FunctionMode,
             MovementMode,
+            VisualMode
             
         }
         char inputChar = ' ';
         State currentstate = State.MovementMode;
         Lexer lexer = new Lexer();
         List<List<string>> cells = new List<List<string>>();
+        List<List<string>> selectedCells = new List<List<string>>();
         bool isFirstLoop = true;
 
 
@@ -80,14 +82,19 @@ namespace minicel
             consoleKey = Console.ReadKey();
             inputChar = consoleKey.KeyChar;
         }
-
-        void SelectCell(int row, int col)
+        
+        void ClearSelection()
         {
 
+            throw new NotImplementedException();
+        }
+        void SelectCell(int row, int col)
+        {
+            throw new NotImplementedException();
         }
         void SetCurrentCell(string s)
         {
-
+            throw new NotImplementedException();
         }
 
         bool CheckForEsc()
@@ -132,6 +139,9 @@ namespace minicel
                         lexer.Clear();
                     }
                     break;
+                case State.VisualMode:
+                    throw new NotImplementedException();
+                    break;
                 case State.MovementMode:
                     
                     Console.Clear();
@@ -175,10 +185,14 @@ namespace minicel
                         case '=':
                             currentstate = State.FunctionMode;
                             break;
+                        case 'v':
+                            currentstate = State.VisualMode;
+                            break;
                         default:
                             break;
 
                     }
+
                     SelectCell(rowPos, colPos);
                     DrawCols();
                     DrawRows();
@@ -274,8 +288,8 @@ namespace minicel
             }
         }
 
-        void UpdateCells() { 
-
+        void UpdateCells() {
+            throw new NotImplementedException();
         }
         public MinicelApplication(List<string> content)
         {
