@@ -9,6 +9,18 @@ namespace minicel
     class MinicelApplication
     {
 
+        struct CellPos
+        {
+            public int column;
+            public int row;
+            public CellPos(int _col, int _row)
+            {
+                column = _col;
+                row = _row;
+                
+            }
+        }
+
         int colPos = 0;
         int rowPos = 0;
 
@@ -27,7 +39,7 @@ namespace minicel
         State currentstate = State.MovementMode;
         Lexer lexer = new Lexer();
         List<List<string>> cells = new List<List<string>>();
-        List<List<string>> selectedCells = new List<List<string>>();
+        List<CellPos> selectedCells = new List<CellPos>();
         bool isFirstLoop = true;
 
 
@@ -90,7 +102,7 @@ namespace minicel
         }
         void SelectCell(int row, int col)
         {
-            throw new NotImplementedException();
+            selectedCells.Add(new CellPos(colPos, rowPos));
         }
         void SetCurrentCell(string s)
         {
