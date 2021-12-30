@@ -21,9 +21,9 @@ namespace minicel
         {
 
         }
-        public void Dump()
+        public string Dump()
         {
-
+            return null;
         }
         public void Clear()
         {

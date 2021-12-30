@@ -121,7 +121,16 @@ namespace minicel
                     }
                     break;
                 case State.InsertMode:
+                    
+                    if (CheckForEsc())
+                        break;
 
+                    if (consoleKey.Key != ConsoleKey.Enter)
+                        lexer.KeepTrack(inputChar);
+                    else {
+                        SetCurrentCell(lexer.Dump());
+                        lexer.Clear();
+                    }
                     break;
                 case State.MovementMode:
                     
@@ -170,7 +179,7 @@ namespace minicel
                             break;
 
                     }
-
+                    SelectCell(rowPos, colPos);
                     DrawCols();
                     DrawRows();
                     break;
