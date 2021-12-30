@@ -6,8 +6,24 @@ using System.Threading.Tasks;
 
 namespace minicel
 {
-    class Lexer
+    public class Lexer
     {
+        List<char> cache = new List<char>(); 
 
+        public char[] AsCommand()
+        {
+            return null;
+        }public char[] AsFunction()
+        {
+            return null;
+        }
+        public  void KeepTrack(char c)
+        {
+
+        }
+        public void Clear()
+        {
+
+        }
     }
 }
