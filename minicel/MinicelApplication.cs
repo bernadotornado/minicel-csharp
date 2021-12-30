@@ -70,6 +70,7 @@ namespace minicel
             {
                 Console.Write((char)(column) + "       " + (column != 77 ? "|" : ""));
             }
+            Console.Write("\n");
         }
 
         void DrawMode() {

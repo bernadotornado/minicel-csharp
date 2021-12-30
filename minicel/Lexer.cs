@@ -19,11 +19,18 @@ namespace minicel
         }
         public  void KeepTrack(char c)
         {
-
+            cache.Add(c);
         }
         public string Dump()
         {
-            return null;
+            string s = "";
+            foreach (var item in cache)
+            {
+                s += item;
+
+            }
+
+            return s ;
         }
         public void Clear()
         {
