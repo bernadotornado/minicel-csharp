@@ -20,6 +20,8 @@ namespace minicel
                 
             }
         }
+        CellPos renderingCell;
+        
 
         int colPos = 0;
         int rowPos = 0;
@@ -48,8 +50,12 @@ namespace minicel
 
         void DrawRows()
         {
+
+            
             for (int row = 0; row < 26; row++)
             {
+                renderingCell.row = row;
+                ConsoleAppearance.GreenBGBlackFG(); 
                 string rowf = row.ToString();
                 string res = "";
                 int length = 3;
@@ -58,7 +64,20 @@ namespace minicel
                     res += " ";
                 }
                 res += row.ToString();
-                Console.Write(res + "\n");
+                Console.Write(res);
+                ConsoleAppearance.ResetColors();
+                try
+                {
+
+                    Console.Write(cells[renderingCell.row][renderingCell.column]);
+                }
+                catch (Exception)
+                {
+
+                }
+
+                Console.Write("\n");
+                
             }
         }
         void DrawCols()

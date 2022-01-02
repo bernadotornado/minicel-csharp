@@ -29,7 +29,7 @@ namespace minicel
             "new"
         };
 
-        static void Quit(int exitCode, string errorMessage = "none") 
+        static public void Quit(int exitCode, string errorMessage = "none") 
         {
             if(exitCode != 0 && errorMessage != "none")
             {

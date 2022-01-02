@@ -8,10 +8,16 @@ namespace minicel
 {
     public class Lexer
     {
-        List<char> cache = new List<char>(); 
+        List<char> content = new List<char>();
+        Stack<List<char>> cache = new Stack<List<char>>();
+
 
         public char[] AsCommand()
         {
+            if (content.Contains('q'))
+            {
+                Program.Quit(0);
+            }
             return null;
         }public char[] AsFunction()
         {
@@ -19,12 +25,12 @@ namespace minicel
         }
         public  void KeepTrack(char c)
         {
-            cache.Add(c);
+            content.Add(c);
         }
         public string Dump()
         {
             string s = "";
-            foreach (var item in cache)
+            foreach (var item in content)
             {
                 s += item;
 
