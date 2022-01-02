@@ -71,8 +71,10 @@ namespace minicel
                     for (int i = 0; i < cells[renderingCell.row].Count; i++)
                     {
                         renderingCell.column = i;
+
+                        Console.Write("       ");
                         Console.Write(cells[renderingCell.row][renderingCell.column]);
-                        Console.Write("\t");
+                        Console.Write(" ");
                     }
                 }
                 catch (Exception)
