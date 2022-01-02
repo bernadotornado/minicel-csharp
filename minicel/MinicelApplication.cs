@@ -70,10 +70,16 @@ namespace minicel
                 {
                     for (int i = 0; i < cells[renderingCell.row].Count; i++)
                     {
+                        if (i > 12)
+                            break;
                         renderingCell.column = i;
 
                         Console.Write("       ");
                         Console.Write(cells[renderingCell.row][renderingCell.column]);
+                        if(cells[renderingCell.row][renderingCell.column].Length== 0)
+                        {
+                            Console.Write(" ");
+                        }
                         Console.Write(" ");
                     }
                 }
