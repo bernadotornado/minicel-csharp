@@ -68,14 +68,18 @@ namespace minicel
                 ConsoleAppearance.ResetColors();
                 try
                 {
-
-                    Console.Write(cells[renderingCell.row][renderingCell.column]);
+                    for (int i = 0; i < cells[renderingCell.row].Count; i++)
+                    {
+                        renderingCell.column = i;
+                        Console.Write(cells[renderingCell.row][renderingCell.column]);
+                        Console.Write("\t");
+                    }
                 }
                 catch (Exception)
                 {
 
                 }
-
+                
                 Console.Write("\n");
                 
             }
