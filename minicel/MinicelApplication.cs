@@ -70,7 +70,8 @@ namespace minicel
                 // Draw Cell content
                 try
                 {
-                    for (int i = 0; i < cells[renderingCell.row].Count; i++)
+                    int count = cells[renderingCell.row].Count;
+                    for (int i = 0; i < count; i++)
                     {
                         if (i > 12)
                             break;
@@ -79,9 +80,14 @@ namespace minicel
                         res = "";
                         string s = cells[renderingCell.row][renderingCell.column];
                         s = (s.Length > length ? s.Substring(0, length) : s);
+                        if (s.Length == 0) { 
+                            s = "~"; 
+                            ConsoleAppearance.BlackBGGreenFG(); 
+                        }
                         for (int g = 0; g < length - s.Length; g++)
                             res += " ";
-                        Console.Write(res + s + " "); 
+                        Console.Write(res + s + ((i == count-1)?"":" "));
+                        ConsoleAppearance.ResetColors();
                     }
                 }
                 catch (Exception)
