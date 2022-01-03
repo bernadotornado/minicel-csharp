@@ -51,7 +51,18 @@ namespace minicel
         public static Dictionary<string, Command> commandList = new Dictionary<string, Command>()
         {
             {"w", content => {
+                List<List<string>> cells =(List<List<string>>) content[1];
                 StreamWriter sw = new StreamWriter((string)(content[0]));
+                for (int y = 0; y < cells.Count; y++)
+                {
+                    string res = "";
+                    for (int x = 0; x < cells[y].Count; x++)
+                    {
+                        res+= cells[y][x]+";";
+			        }
+                    sw.WriteLine(res);
+			    }
+                
                 sw.Close();
             }},
             {"q", content =>
