@@ -59,12 +59,12 @@ namespace minicel
                 renderingCell.row = row;
                 ConsoleAppearance.GreenBGBlackFG(); 
                 string rowf = (row+1).ToString();
-                string res = "";
+                string padding = "";
                 int length = 3;
                 for (int i = 0; i < length - rowf.Length; i++) 
-                    res += " "; 
-                res += rowf;
-                Console.Write(res);
+                    padding += " "; 
+                padding += rowf;
+                Console.Write(padding);
                 ConsoleAppearance.ResetColors();
 
                 // Draw Cell content
@@ -73,21 +73,26 @@ namespace minicel
                     int count = cells[renderingCell.row].Count;
                     for (int i = 0; i < count; i++)
                     {
+                        ConsoleAppearance.ResetColors();
                         if (i > 12)
                             break;
                         renderingCell.column = i;
                         length = 8;
-                        res = "";
-                        string s = cells[renderingCell.row][renderingCell.column];
-                        s = (s.Length > length ? s.Substring(0, length) : s);
-                        if (s.Length == 0) { 
-                            s = "~"; 
-                            ConsoleAppearance.BlackBGDarkBlueFG(); 
+                        padding = "";
+                        string cellContent = cells[renderingCell.row][renderingCell.column];
+                        cellContent = (cellContent.Length > length ? cellContent.Substring(0, length) : cellContent);
+                        if (cellContent.Length == 0) { 
+                            cellContent = " ~";
+                            // ConsoleAppearance.BlackBGDarkBlueFG
+                            ConsoleAppearance.BlackBGGreenFG();
                         }
-                        for (int g = 0; g < length - s.Length; g++)
-                            res += " ";
-                        Console.Write(res + s + ((i == count-1)?"":" "));
-                        ConsoleAppearance.ResetColors();
+                        for (int g = 0; g < length - cellContent.Length; g++)
+                            padding += " ";
+                        
+                        Console.Write(cellContent + padding); 
+                        ConsoleAppearance.BlackBGGreenFG();
+                        Console.Write(((i == 12) ? "" : "|"));
+                        
                     }
                 }
                 catch (Exception)
