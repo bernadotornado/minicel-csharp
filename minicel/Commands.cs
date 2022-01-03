@@ -48,12 +48,16 @@ namespace minicel
         //    }
         //}
 
-        static Dictionary<string, Command> commandList = new Dictionary<string, Command>()
+        public static Dictionary<string, Command> commandList = new Dictionary<string, Command>()
         {
             {"w", content => {
                 StreamWriter sw = new StreamWriter((string)(content[0]));
-                
-            }}
+                sw.Close();
+            }},
+            {"q", content =>
+            {
+                Program.Quit(0);
+            } }
         };
 
     }

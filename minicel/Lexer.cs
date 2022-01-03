@@ -16,7 +16,7 @@ namespace minicel
         {
             if (content.Contains('q'))
             {
-                Program.Quit(0);
+                Commands.commandList["q"].Invoke(null);
             }
             return null;
         }public char[] AsFunction()

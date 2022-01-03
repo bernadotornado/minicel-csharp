@@ -111,7 +111,7 @@ namespace minicel
                 State.InsertMode => "--INSERT--",
                 State.CommandMode => "--COMMAND--",
                 State.MovementMode => "--MOVE--",
-                // _ => "--MOVE--"
+                State.FunctionMode => "--FN--",
 
             };
             ConsoleAppearance.BlackBGGreenFG();
