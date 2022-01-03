@@ -16,6 +16,11 @@ namespace minicel
             Console.ForegroundColor = ConsoleColor.Black;
             Console.BackgroundColor = ConsoleColor.Green;
         }
+        static public void BlackBGDarkBlueFG()
+        {
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.BackgroundColor = ConsoleColor.Black;
+        }
         static public void BlackBGGreenFG()
         {
             Console.ForegroundColor = ConsoleColor.Green;

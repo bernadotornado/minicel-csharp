@@ -82,7 +82,7 @@ namespace minicel
                         s = (s.Length > length ? s.Substring(0, length) : s);
                         if (s.Length == 0) { 
                             s = "~"; 
-                            ConsoleAppearance.BlackBGGreenFG(); 
+                            ConsoleAppearance.BlackBGDarkBlueFG(); 
                         }
                         for (int g = 0; g < length - s.Length; g++)
                             res += " ";
