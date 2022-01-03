@@ -52,7 +52,7 @@ namespace minicel
         {
 
             
-            for (int row = 0; row < 26; row++)
+            for (int row = 0; row < 27; row++)
             {
 
                 // Draw Header
@@ -322,7 +322,7 @@ namespace minicel
                     
                 } 
                 UpdateState();
-                    Console.Write("\n");
+                   // Console.Write("\n");
                     ConsoleAppearance.GreenBGBlackFG();
                 DrawMode();
                 isFirstLoop = false;
