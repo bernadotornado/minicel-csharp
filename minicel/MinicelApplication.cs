@@ -80,12 +80,14 @@ namespace minicel
                         length = 8;
                         padding = "";
                         string cellContent = cells[renderingCell.row][renderingCell.column];
-                        cellContent = (cellContent.Length > length ? cellContent.Substring(0, length) : cellContent);
-                        if (cellContent.Length == 0) { 
-                            cellContent = " ~";
+                        if (cellContent.Length == 0)
+                        {
+                            cellContent = "--------------------------------";
                             // ConsoleAppearance.BlackBGDarkBlueFG
                             ConsoleAppearance.BlackBGGreenFG();
                         }
+                        cellContent = (cellContent.Length > length ? cellContent.Substring(0, length) : cellContent);
+                        
                         for (int g = 0; g < length - cellContent.Length; g++)
                             padding += " ";
                         
