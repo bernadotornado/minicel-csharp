@@ -61,6 +61,7 @@ namespace minicel
                         res+= cells[y][x]+";";
 			        }
                     sw.WriteLine(res);
+
 			    }
                 
                 sw.Close();

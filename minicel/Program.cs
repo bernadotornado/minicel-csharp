@@ -77,6 +77,7 @@ namespace minicel
                    "\t\t minicel --open <path>\n" +
                    "\t\t minicel -o <path> -f\n" +
                    "\t\t minicel --open <path> -f\n"
+                   
                    );
         }
         static void Version()

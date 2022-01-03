@@ -54,18 +54,20 @@ namespace minicel
             
             for (int row = 0; row < 26; row++)
             {
+
+                // Draw Header
                 renderingCell.row = row;
                 ConsoleAppearance.GreenBGBlackFG(); 
                 string rowf = row.ToString();
                 string res = "";
                 int length = 3;
-                for (int i = 0; i < length - rowf.Length; i++)
-                {
-                    res += " ";
-                }
+                for (int i = 0; i < length - rowf.Length; i++) 
+                    res += " "; 
                 res += row.ToString();
                 Console.Write(res);
                 ConsoleAppearance.ResetColors();
+
+                // Draw Cell content
                 try
                 {
                     for (int i = 0; i < cells[renderingCell.row].Count; i++)
@@ -73,19 +75,18 @@ namespace minicel
                         if (i > 12)
                             break;
                         renderingCell.column = i;
-
-                        Console.Write("       ");
-                        Console.Write(cells[renderingCell.row][renderingCell.column]);
-                        if(cells[renderingCell.row][renderingCell.column].Length== 0)
-                        {
-                            Console.Write(" ");
-                        }
-                        Console.Write(" ");
+                        length = 8;
+                        res = "";
+                        string s = cells[renderingCell.row][renderingCell.column];
+                        s = (s.Length > length ? s.Substring(0, length) : s);
+                        for (int g = 0; g < length - s.Length; g++)
+                            res += " ";
+                        Console.Write(res + s + " "); 
                     }
                 }
                 catch (Exception)
                 {
-
+                    //TODO Handle Exception haha
                 }
                 
                 Console.Write("\n");
