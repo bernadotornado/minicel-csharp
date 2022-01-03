@@ -58,12 +58,12 @@ namespace minicel
                 // Draw Header
                 renderingCell.row = row;
                 ConsoleAppearance.GreenBGBlackFG(); 
-                string rowf = row.ToString();
+                string rowf = (row+1).ToString();
                 string res = "";
                 int length = 3;
                 for (int i = 0; i < length - rowf.Length; i++) 
                     res += " "; 
-                res += row.ToString();
+                res += rowf;
                 Console.Write(res);
                 ConsoleAppearance.ResetColors();
 
