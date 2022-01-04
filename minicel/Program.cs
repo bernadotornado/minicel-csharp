@@ -135,10 +135,14 @@ namespace minicel
                 {
                     string s = args[0];
                     vs = s.Split(".");
-                    foreach (string item in vs)
-                    {
-                        Console.WriteLine(item);
-                    }
+                    //foreach (string item in vs)
+                    //{
+                    //    Console.WriteLine(item);
+                    //}
+                    ConsoleAppearance.BlackBGGreenFG();
+                    Console.Write("[minicel]:");
+                    Console.ResetColor();
+                    Console.Write(" Opening File...");
                 }
                 if(vs[1] == "csv" || force)
                 { 
