@@ -77,12 +77,13 @@ namespace minicel
                         if (i > 12)
                             break;
                         renderingCell.column = i;
-                        length = 8;
+                        length = 7;
                         padding = "";
                         string cellContent = cells[renderingCell.row][renderingCell.column];
                         if (cellContent.Length == 0)
                         {
-                            cellContent = "--------------------------------";
+                            cellContent = "-" +
+                                "";
                             // ConsoleAppearance.BlackBGDarkBlueFG
                             ConsoleAppearance.BlackBGGreenFG();
                         }
@@ -91,7 +92,7 @@ namespace minicel
                         for (int g = 0; g < length - cellContent.Length; g++)
                             padding += " ";
                         
-                        Console.Write(cellContent + padding); 
+                        Console.Write(" "+ cellContent + padding); 
                         ConsoleAppearance.BlackBGGreenFG();
                         Console.Write(((i == 12) ? "" : "|"));
                         
@@ -152,7 +153,7 @@ namespace minicel
         }
         void SetCurrentCell(string s)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         bool CheckForEsc()
@@ -182,7 +183,9 @@ namespace minicel
                         else
                             CommandHandler.ThrowError(lexer.AsCommand()); 
                         lexer.Clear();
-                        currentstate = State.MovementMode; 
+                        //Console.Clear();
+                        currentstate = State.MovementMode;
+                        UpdateState();
                     }
                     break;
                 case State.InsertMode:
@@ -195,6 +198,8 @@ namespace minicel
                     else {
                         SetCurrentCell(lexer.Dump());
                         lexer.Clear();
+                        currentstate = State.MovementMode;
+                        UpdateState();
                     }
                     break;
                 case State.VisualMode:
@@ -270,6 +275,7 @@ namespace minicel
                             CommandHandler.ThrowError(lexer.AsFunction());
                         lexer.Clear();
                         currentstate = State.MovementMode;
+                        UpdateState();
                     }
                     break;
                 default:
