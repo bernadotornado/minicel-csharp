@@ -82,9 +82,7 @@ namespace minicel
                         string cellContent = cells[renderingCell.row][renderingCell.column];
                         if (cellContent.Length == 0)
                         {
-                            cellContent = "-" +
-                                "";
-                            // ConsoleAppearance.BlackBGDarkBlueFG
+                            cellContent = "-" ; 
                             ConsoleAppearance.BlackBGGreenFG();
                         }
                         cellContent = (cellContent.Length > length ? cellContent.Substring(0, length) : cellContent);
