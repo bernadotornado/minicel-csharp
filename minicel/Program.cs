@@ -28,7 +28,7 @@ namespace minicel
             "--open",
             "new"
         };
-
+        static public MinicelApplication App;
         static public void Quit(int exitCode, string errorMessage = "none") 
         {
             if(exitCode != 0 && errorMessage != "none")
@@ -241,7 +241,7 @@ namespace minicel
             
             if(args.Length != 0)
             {
-                MinicelApplication app = new MinicelApplication(content);
+                App = new MinicelApplication(content);
             }
             else
             {

@@ -21,10 +21,9 @@ namespace minicel
             }
         }
         CellPos renderingCell;
-        
-
-        int colPos = 0;
+        (int Left, int Top) curspos = Console.GetCursorPosition();
         int rowPos = 0;
+        int colPos = 0;
 
         string last = "";
 
@@ -41,6 +40,11 @@ namespace minicel
         State currentstate = State.MovementMode;
         Lexer lexer = new Lexer();
         List<List<string>> cells = new List<List<string>>();
+        public List<List<string>> Cells
+        {
+            get { return cells; }
+        }
+
         List<CellPos> selectedCells = new List<CellPos>();
         bool isFirstLoop = true;
 
@@ -89,8 +93,10 @@ namespace minicel
                         
                         for (int g = 0; g < length - cellContent.Length; g++)
                             padding += " ";
-                        
-                        Console.Write(" "+ cellContent + padding); 
+                        bool isSelected = row == colPos && i == rowPos;
+
+                        Console.Write((isSelected? "@":" ")+
+                            cellContent + padding); 
                         ConsoleAppearance.BlackBGGreenFG();
                         Console.Write(((i == 12) ? "" : "|"));
                         
@@ -147,11 +153,11 @@ namespace minicel
         }
         void SelectCell(int row, int col)
         {
-            selectedCells.Add(new CellPos(colPos, rowPos));
+            selectedCells.Add(new CellPos(rowPos, colPos));
         }
         void SetCurrentCell(string s)
         {
-            //throw new NotImplementedException();
+            cells[colPos][rowPos] = s;
         }
 
         bool CheckForEsc()
@@ -159,6 +165,7 @@ namespace minicel
             if (consoleKey.Key == ConsoleKey.Escape)
             {
                 lexer.Clear();
+                Console.Clear();
                 currentstate = State.MovementMode;
                 return true;
 
@@ -171,7 +178,9 @@ namespace minicel
             {
                 case State.CommandMode:
                     if (CheckForEsc())
-                        break;
+                        UpdateState();
+                    if (consoleKey.Key == ConsoleKey.Backspace)
+                        lexer.Pop();
 
                     if (consoleKey.Key != ConsoleKey.Enter)
                         lexer.KeepTrack(inputChar);
@@ -189,7 +198,9 @@ namespace minicel
                 case State.InsertMode:
                     
                     if (CheckForEsc())
-                        break;
+                        UpdateState();
+                    if (consoleKey.Key == ConsoleKey.Backspace)
+                        lexer.Pop();
 
                     if (consoleKey.Key != ConsoleKey.Enter)
                         lexer.KeepTrack(inputChar);
@@ -204,7 +215,6 @@ namespace minicel
                     throw new NotImplementedException();
                     break;
                 case State.MovementMode:
-                    
                     Console.Clear();
                     switch (consoleKey.Key)
                     {
@@ -227,15 +237,16 @@ namespace minicel
                     {
                         case 'h':
                             rowPos--;
+
                             break;
                         case 'j':
-                            colPos--;
+                             colPos++;
                             break;
                         case 'l':
                             rowPos++;
                             break;
                         case 'k':
-                            colPos++;
+                             colPos--;
                             break;
                         case ':':
                             currentstate = State.CommandMode;
@@ -253,14 +264,18 @@ namespace minicel
                             break;
 
                     }
+                    
+                    ///Console.WriteLine(curspos.GetType());
 
-                    SelectCell(rowPos, colPos);
+                    //Console.SetCursorPosition(curspos.Left+rowPos, curspos.Top+colPos);
+
+                    SelectCell(colPos, rowPos);
                     DrawCols();
                     DrawRows();
                     break;
                 case State.FunctionMode:
                     if (CheckForEsc())
-                        break;
+                        UpdateState();
 
                     if (consoleKey.Key != ConsoleKey.Enter)
                         lexer.KeepTrack(inputChar);

@@ -11,12 +11,25 @@ namespace minicel
         List<char> content = new List<char>();
         Stack<List<char>> cache = new Stack<List<char>>();
 
-
+        public void Pop()
+        {
+            content.RemoveAt(content.Count - 1);
+        }
         public char[] AsCommand()
         {
             if (content.Contains('q'))
             {
                 Commands.commandList["q"].Invoke(null);
+            }
+            if(content.Contains('w'))
+            {
+                List<object> objs = new List<object>();
+                foreach (var cell in Program.App.Cells)
+                {
+                    objs.Add(cell);
+                }
+                Commands.commandList["w"].Invoke(objs
+                    );
             }
             return null;
         }public char[] AsFunction()
