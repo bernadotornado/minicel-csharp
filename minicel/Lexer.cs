@@ -13,7 +13,17 @@ namespace minicel
 
         public void Pop()
         {
-            content.RemoveAt(content.Count - 1);
+
+            content.RemoveAt(content.Count-1);
+            // char a = content.Last();
+            // content.Remove(a);
+            //string a = Dump();
+            ////Clear();
+            //char[]d = a.ToCharArray();
+            //foreach (var item in d)
+            //{
+            //    Console.WriteLine(item);
+            //}
         }
         public char[] AsCommand()
         {
@@ -53,7 +63,8 @@ namespace minicel
         }
         public void Clear()
         {
-
+            cache.Push(content);
+            content.Clear();
         }
     }
 }

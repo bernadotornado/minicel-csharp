@@ -183,7 +183,10 @@ namespace minicel
                         lexer.Pop();
 
                     if (consoleKey.Key != ConsoleKey.Enter)
-                        lexer.KeepTrack(inputChar);
+                    {
+                        if (consoleKey.Key != ConsoleKey.Backspace)
+                            lexer.KeepTrack(inputChar);
+                    }
                     else {
                         if (CommandHandler.TryCommand(lexer.AsCommand(), out Commands.Command command))
                             CommandHandler.Excecute(command);
@@ -202,8 +205,10 @@ namespace minicel
                     if (consoleKey.Key == ConsoleKey.Backspace)
                         lexer.Pop();
 
-                    if (consoleKey.Key != ConsoleKey.Enter)
+                    if (consoleKey.Key != ConsoleKey.Enter) {
+                        if(consoleKey.Key != ConsoleKey.Backspace)
                         lexer.KeepTrack(inputChar);
+                    }
                     else {
                         SetCurrentCell(lexer.Dump());
                         lexer.Clear();
