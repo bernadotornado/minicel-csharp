@@ -13,7 +13,7 @@ namespace minicel
 
         public void Pop()
         {
-
+            if(content.Count>0)
             content.RemoveAt(content.Count-1);
             // char a = content.Last();
             // content.Remove(a);
