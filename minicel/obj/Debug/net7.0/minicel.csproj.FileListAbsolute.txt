@@ -1,0 +1,15 @@
+C:\Users\bszha\Spengergasse\SideProjects\minicel\minicel-csharp\minicel\bin\Debug\net7.0\minicel.exe
+C:\Users\bszha\Spengergasse\SideProjects\minicel\minicel-csharp\minicel\bin\Debug\net7.0\minicel.deps.json
+C:\Users\bszha\Spengergasse\SideProjects\minicel\minicel-csharp\minicel\bin\Debug\net7.0\minicel.runtimeconfig.json
+C:\Users\bszha\Spengergasse\SideProjects\minicel\minicel-csharp\minicel\bin\Debug\net7.0\minicel.dll
+C:\Users\bszha\Spengergasse\SideProjects\minicel\minicel-csharp\minicel\bin\Debug\net7.0\minicel.pdb
+C:\Users\bszha\Spengergasse\SideProjects\minicel\minicel-csharp\minicel\obj\Debug\net7.0\minicel.csproj.AssemblyReference.cache
+C:\Users\bszha\Spengergasse\SideProjects\minicel\minicel-csharp\minicel\obj\Debug\net7.0\minicel.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bszha\Spengergasse\SideProjects\minicel\minicel-csharp\minicel\obj\Debug\net7.0\minicel.AssemblyInfoInputs.cache
+C:\Users\bszha\Spengergasse\SideProjects\minicel\minicel-csharp\minicel\obj\Debug\net7.0\minicel.AssemblyInfo.cs
+C:\Users\bszha\Spengergasse\SideProjects\minicel\minicel-csharp\minicel\obj\Debug\net7.0\minicel.csproj.CoreCompileInputs.cache
+C:\Users\bszha\Spengergasse\SideProjects\minicel\minicel-csharp\minicel\obj\Debug\net7.0\minicel.dll
+C:\Users\bszha\Spengergasse\SideProjects\minicel\minicel-csharp\minicel\obj\Debug\net7.0\refint\minicel.dll
+C:\Users\bszha\Spengergasse\SideProjects\minicel\minicel-csharp\minicel\obj\Debug\net7.0\minicel.pdb
+C:\Users\bszha\Spengergasse\SideProjects\minicel\minicel-csharp\minicel\obj\Debug\net7.0\minicel.genruntimeconfig.cache
+C:\Users\bszha\Spengergasse\SideProjects\minicel\minicel-csharp\minicel\obj\Debug\net7.0\ref\minicel.dll
